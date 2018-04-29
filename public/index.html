@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>eCTD Utility</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--3rd party CSS -->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Styles -->
+    <link href="styles/main.css" rel="stylesheet">
+</head>
+<body ng-app="ectdApp">
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a href="http://www.jvagpharma.com" class="navbar-brand" target="_blank">
+                <img src="images/logo.jpg" alt="Snehal" height="30px">
+            </a>
+        </div>
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="home()"  ui-sref-active="active">Home</a></li>
+                <li><a ui-sref="create()" ui-sref-active="active">New</a></li>
+                <li><a ui-sref=""  ui-sref-active="active" target="_blank">Validate</a></li>
+                <li><a ui-sref="dossier({dossierId: 111})"  ui-sref-active="active">Admin</a></li>
+                <li><a ui-sref=""  ui-sref-active="active">Profile</a></li>
+                <li><a ui-sref=""  ui-sref-active="active">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div ui-view></div>
+    </div>
+    <!-- 3rd party scripts -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- Angular Scripts -->
+    <script src="app.js"></script>
+    <script src="scripts/controllers/dossier-details.js"></script>
+</body>
+</html>

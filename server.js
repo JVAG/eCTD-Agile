@@ -10,9 +10,9 @@ var session = require('express-session');
 var app = express();
 var port = process.env.PORT || 3000;
 
-app.get('/', function(req, res){
-    res.send("Server is listening in port " + port);
-});
+app.use(express.static('public'));
+app.use('/lib', express.static('bower_components'));
+
 app.listen(port, function(){
     console.log("Server is listening in port " + port);
 });
