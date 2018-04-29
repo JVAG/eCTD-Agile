@@ -1,0 +1,27 @@
+{
+  "name": "ectd-agile",
+  "version": "1.0.0",
+  "description": "eCTD web application using agile methodology and test driven development",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JVAG/eCTD-Agile.git"
+  },
+  "author": "Snehal Indurkar, Gauri Kasture, Samiksha Gautam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JVAG/eCTD-Agile/issues"
+  },
+  "homepage": "https://github.com/JVAG/eCTD-Agile#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "morgan": "^1.9.0",
+    "serve-favicon": "^2.5.0"
+  }
+}
