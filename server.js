@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3030;
 
 app.use(express.static('public'));
 app.use('/lib', express.static('bower_components'));

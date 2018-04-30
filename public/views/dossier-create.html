@@ -1,1 +1,129 @@
-<h1>Dossier Create-New View</h1>
+<div class="row-fluid">
+    <div class="dossier-create-form">
+        <h3 class="text-center text-primary">Create New Dossier</h3>
+        <hr/>
+        <form name="dcctrl.form" class="form-horizontal" ng-submit="submitNewDossier" novalidate>
+            <div class="col-sm-12 col-md-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Dossier</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Title</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" ng-model="dcctrl.dossier.title" required>
+                            </div>
+                            <span class="text-danger col-sm-3">*Should be unique</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Description:</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text"/>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Region:</label>
+                            <div class="col-sm-6">
+                                <select class="form-control">
+                                    <option value="US" selected>US</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Application Type:</label>
+                            <div class="col-sm-6">
+                                <select class="form-control">
+                                        <option value="DMF">DMF</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">eCTD Version:</label>
+                            <div class="col-sm-6">
+                                <select class="form-control">
+                                    <option value="3.2">3.2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Dosage Form:</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" 
+                                    ng-options="dosage for dosage in dcctrl.dosageForms"
+                                    ng-init="dcctrl.dossier.dosageForm = dcctrl.dossier.dosageForm || dcctrl.dosageForms[0]"
+                                    ng-model="dcctrl.dossier.dosageForm">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Applicant:</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.applicant" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Due Date:</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="date" placeholder="mm/dd/yyyy" ng-model="dcctrl.dossier.dueDate" required/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Drug Product</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Brand Name:</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.productBrandName" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Generic Name:</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.productGenericName" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Manufacturer: </label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.productManufacturer" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">ATC code: </label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.atcCode" required/>
+                            </div>
+                            <span class="text-danger col-sm-3">*Should be alphanumeric</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Drug Substances</div>
+                    <div class="panel-body">
+                        <div ng-repeat="ds in dcctrl.dossier.drugSubstances">
+                            <label class="col-sm-2 control-label">Name: </label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" ng-model="$index"/>
+                            </div>
+                            <label class="col-sm-2 control-label">Manufacturer: </label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" ng-model="$index"/>
+                            </div>
+                            <br/><br/>
+                        </div>
+                        <div class="col-sm-12">
+                            <br/>
+                            <button class="btn btn-default pull-right" ng-click="dcctrl.addDrugSubstance()">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <button class="btn btn-lg btn-primary pull-right" ng-disabled="!dcctrl.form.$valid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

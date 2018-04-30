@@ -14,3 +14,7 @@ ul.nav.navbar-nav > li{
 .dragover {
     border: 5px dashed blue;
 }
+
+input.ng-invalid {
+    border:1px solid red;
+}

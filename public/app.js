@@ -9,12 +9,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         .state('dossier', {
             url: '/dossier/:dossierId',
             templateUrl: 'views/dossier-details.html',
-            controller: "DossierDetailsController as dctrl"
+            controller: "DossierDetailsController as ddctrl"
         })
         .state('create', {
             url: '/create',
             templateUrl: 'views/dossier-create.html',
-            controller: ""
+            controller: "DossierCreateController as dcctrl"
         })
         .state('invalid', {
             url: '/invalid',
