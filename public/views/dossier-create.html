@@ -2,7 +2,7 @@
     <div class="dossier-create-form">
         <h3 class="text-center text-primary">Create New Dossier</h3>
         <hr/>
-        <form name="dcctrl.form" class="form-horizontal" ng-submit="submitNewDossier" novalidate>
+        <form name="dcctrl.form" class="form-horizontal" novalidate>
             <div class="col-sm-12 col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-heading">Dossier</div>
@@ -63,8 +63,14 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Due Date:</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="date" placeholder="mm/dd/yyyy" ng-model="dcctrl.dossier.dueDate" required/>
+                                <input class="form-control" type="date" placeholder="mm/dd/yyyy" name="dueDate"
+                                    ng-model="dcctrl.dossier.dueDate"
+                                    ng-min="dcctrl.today" 
+                                    required/>
                             </div>
+                            <span class="text-danger col-sm-3" ng-show="!dcctrl.form.dueDate.$valid">
+                                *Entering future date is required
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -122,7 +128,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <button class="btn btn-lg btn-primary pull-right" ng-disabled="!dcctrl.form.$valid">Submit</button>
+                <button class="btn btn-lg btn-primary pull-right" ng-click="dcctrl.submitNewDossier()" ng-disabled="!dcctrl.form.$valid">Submit</button>
             </div>
         </form>
     </div>
