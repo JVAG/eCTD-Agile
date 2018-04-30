@@ -110,13 +110,16 @@
                     <div class="panel-heading">Drug Substances</div>
                     <div class="panel-body">
                         <div ng-repeat="ds in dcctrl.dossier.drugSubstances">
-                            <label class="col-sm-2 control-label">Name: </label>
+                            <label class="col-sm-1 control-label">Name: </label>
                             <div class="col-sm-4">
-                                <input class="form-control" type="text" ng-model="$index"/>
+                                <input class="form-control" type="text" ng-model="ds.name"/>
                             </div>
                             <label class="col-sm-2 control-label">Manufacturer: </label>
                             <div class="col-sm-4">
-                                <input class="form-control" type="text" ng-model="$index"/>
+                                <input class="form-control" type="text" ng-model="ds.manufacturer"/>
+                            </div>
+                            <div class="col-sm-1">
+                                <button class="btn btn-danger pull-right" ng-click="dcctrl.removeDrugSubstance($index)">-</button>
                             </div>
                             <br/><br/>
                         </div>

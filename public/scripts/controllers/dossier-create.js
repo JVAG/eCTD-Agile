@@ -9,6 +9,9 @@ var app = angular.module('ectdApp')
     this.addDrugSubstance = function(){
         this.dossier.drugSubstances.push({});
     };
+    this.removeDrugSubstance = function(index){
+        this.dossier.drugSubstances.splice(index, 1); 
+    }
     this.submitNewDossier = function(){
         console.log(this.dossier);
         
