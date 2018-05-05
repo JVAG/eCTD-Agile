@@ -1,5 +1,5 @@
 var app = angular.module('ectdApp')
-.controller('DossierCreateController', ['DossierService', '$state', function(DossierService, $state){
+.controller('DossierCreateController', ['$state', 'DossierService', 'NotificationService', function($state, DossierService, notifications){
     this.dosageForms = ['Tablets', 'Capsules', 'Syrup', 'Injection'];
     this.today = new Date();
     this.dossier = {
@@ -19,11 +19,10 @@ var app = angular.module('ectdApp')
         this.dossier = DossierService.addSequence(this.dossier);
         DossierService.createNewDossier(this.dossier, function(err, data){
             if(err){
-                $state.go('error', { 'name': 'Snehal the great' });
+                notifications.addAlert('Error in creating new dossier. Please contact administartor.', 'danger');
             }
             else{
                 console.log(data);
-                
             }
         });
     };

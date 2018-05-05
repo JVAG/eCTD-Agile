@@ -29,7 +29,10 @@
             </ul>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div class="NotificationController">
+        <div ng-controller="NotificationController">
+            <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + alert.type" close="closeAlert($index)">{{alert.msg}}</div>
+        </div>
         <div ui-view></div>
     </div>
     <!-- 3rd party scripts -->
@@ -37,11 +40,13 @@
     <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
     <!-- Angular Scripts -->
     <script src="app.js"></script>
     <script src="scripts/controllers/dossier-details.js"></script>
     <script src="scripts/controllers/dossier-create.js"></script>
     <script src="scripts/services/dossier-service.js"></script>
+    <script src="scripts/services/notification-service.js"></script>
 </body>
 </html>

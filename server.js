@@ -21,7 +21,7 @@ app.use('/lib', express.static('bower_components'));
 /* Using Server Routes */
 app.use('/dossier', dossierApi);
 
-/* Error server-side handling route */
+/* Server-side error handling route */
 app.use(function(err, req, res, next){
     console.error(err.message);
     console.error(err.stack);

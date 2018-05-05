@@ -1,4 +1,4 @@
-var app = angular.module('ectdApp', ['ui.router']);
+var app = angular.module('ectdApp', ['ui.router', 'ui.bootstrap']);
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/invalid');
     $stateProvider
@@ -32,4 +32,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             }
         })
         ;
+}]);
+app.controller('NotificationController', ['$scope', 'NotificationService', function($scope, notifications){
+    $scope.alerts = notifications.alerts;
+    $scope.addAlert = function(){
+        notifications.addAlert();
+    };
+    $scope.closeAlert = function(index){
+        notifications.closeAlert();
+    };
 }]);
