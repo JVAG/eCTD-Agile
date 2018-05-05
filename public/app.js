@@ -4,7 +4,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $stateProvider
         .state('home', {
             url: '/home',
-            template: '<h2>All Dossiers View</h2>',
+            template: '<div class="well"><h4 class="text-primary">Home page is under construction</h4></div>',
         })
         .state('dossier', {
             url: '/dossier/:dossierId',
@@ -16,9 +16,21 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: 'views/dossier-create.html',
             controller: "DossierCreateController as dcctrl"
         })
+        .state('validate', {
+            url: '/validate',
+            template: '<div class="well"><h4 class="text-primary">Validation page is under construction</h4></div>',
+        })
+        .state('admin', {
+            url: '/admin',
+            template: '<div class="well"><h4 class="text-primary">Admin page is under construction</h4></div>',
+        })
+        .state('profile', {
+            url: '/profile',
+            template: '<div class="well"><h4 class="text-primary">Profile page is under construction</h4></div>',
+        })
         .state('invalid', {
             url: '/invalid',
-            template: '<h2 class="text-danger">Error: Invalid URL</h2>'
+            template: '<div class="well"><h4 class="text-danger">Error: Invalid URL</h4></div>'
         })
         .state('error', {
             url: '/error',
