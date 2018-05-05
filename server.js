@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var mongoose = require('mongoose');
 
 /* Importing Server Routes */
 var dossierApi = require('./server/routes/dossier-main');
@@ -17,6 +18,15 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.use('/lib', express.static('bower_components'));
+
+mongoose.connect('mongodb://localhost:27017/meandb', function(err) {
+    if(err){
+        console.log('Not connected to database ', err);
+    }
+    else{
+        console.log('Successfully connected to db');
+    }
+});
 
 /* Using Server Routes */
 app.use('/dossier', dossierApi);

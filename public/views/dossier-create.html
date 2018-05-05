@@ -17,30 +17,33 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Description:</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text"/>  
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.description"/>  
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Region:</label>
                             <div class="col-sm-6">
-                                <select class="form-control">
-                                    <option value="US" selected>US</option>
+                                <select class="form-control"
+                                    ng-options="region for region in dcctrl.regions"
+                                    ng-model="dcctrl.dossier.region">
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Application Type:</label>
                             <div class="col-sm-6">
-                                <select class="form-control">
-                                        <option value="DMF">DMF</option>
+                                <select class="form-control"
+                                    ng-options="applicationType for applicationType in dcctrl.applicationTypes"
+                                    ng-model="dcctrl.dossier.applicationType">
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">eCTD Version:</label>
                             <div class="col-sm-6">
-                                <select class="form-control">
-                                    <option value="3.2">3.2</option>
+                                <select class="form-control"
+                                    ng-options="version for version in dcctrl.versions"
+                                    ng-model="dcctrl.dossier.version">
                                 </select>
                             </div>
                         </div>

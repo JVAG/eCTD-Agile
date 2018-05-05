@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Dossier = require('../models/dossier-model');
 
 var BASE_PATH_MAC = '/Users/snehalindurkar/Desktop/Project eCTD/Dossiers';
 var BASE_PATH_WIN = 'C:/Dossiers/';
@@ -34,10 +35,19 @@ router.get('/', function(req, res) {
  * @route {POST} /dossier
  * @bodyparam {DossierObject} dossier objevt to be saved in the database
  */
-router.post('/', function(req, res){
-    console.log("Testing dossier post route. dossier to post: ", req.body);
-    var dossier = reqq.body;
-    res.status(200).json({'dossier' : dossier});
+router.post('/', function(req, res, next){
+    var dossier = new Dossier({
+        Title: req.body.title,
+        Applicant: req.body.applicant
+    });
+    dossier.save(function(err) {
+        if(err){
+            res.status(500).send(err); 
+        }
+        else {
+            res.status(200).json({'dossier' : dossier});
+        }
+    });
 });
 module.exports = router;
 

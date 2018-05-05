@@ -34,7 +34,7 @@ var app = angular.module('ectdApp')
                     callback(null, data);
                 }, 
                 function(error) {
-                    console.error('Error: ', error);
+                    console.error(error.data);
                     callback(error);
                 });
         };

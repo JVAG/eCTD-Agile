@@ -1,9 +1,15 @@
 var app = angular.module('ectdApp')
 .controller('DossierCreateController', ['$state', 'DossierService', 'NotificationService', function($state, DossierService, notifications){
     this.dosageForms = ['Tablets', 'Capsules', 'Syrup', 'Injection'];
+    this.regions = ['US'];
+    this.applicationTypes = ['DMF'];
+    this.versions = ['3.2'];
     this.today = new Date();
     this.dossier = {
-        drugSubstances: [{}]
+        drugSubstances: [{}],
+        region: this.regions[0],
+        applicationType: this.applicationTypes[0],
+        version: this.versions[0]
     };
 
     this.addDrugSubstance = function(){
