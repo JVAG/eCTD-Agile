@@ -19,6 +19,17 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         .state('invalid', {
             url: '/invalid',
             template: '<h2 class="text-danger">Error: Invalid URL</h2>'
-        });
+        })
+        .state('error', {
+            url: '/error',
+            template: '<h2 class="text-danger">{{error}}</h2>',
+            controller: function($scope, $stateParams){
+                $scope.error = "error of Snehal";
+                console.log($stateParams);
+            },
+            params: {
+                'name': 'some default', 
+            }
+        })
         ;
 }]);
