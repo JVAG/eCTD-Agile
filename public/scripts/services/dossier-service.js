@@ -21,15 +21,12 @@ var app = angular.module('ectdApp')
             return dossier;
         }
         this.createNewDossier = function(dossier, callback){
-            console.log('DossierService createNewDossier: ', dossier);
             var url = "/dossier";
             $http.post(url, dossier).then(
-                function(data) {
-                    console.log(data);
-                    callback(null, data);
+                function(result) {
+                    callback(null, result);
                 }, 
                 function(error) {
-                    console.error(error.data);
                     callback(error);
                 });
         };

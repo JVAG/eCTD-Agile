@@ -30,15 +30,15 @@ var app = angular.module('ectdApp')
     this.submitNewDossier = function(){
         this.dossier = DossierService.setOwner(this.dossier);
         this.dossier = DossierService.addSequence(this.dossier);
-        DossierService.createNewDossier(this.dossier, function(err, data){
+        DossierService.createNewDossier(this.dossier, function(err, result){
             if(err && err.data && err.data.message){
                 notifications.addAlert( err.data.message + ' Please contact administartor if error persists.', 'danger');
             }
-            else if(err){
+            else if(err || !result || !result.data){
                 notifications.addAlert('Error in creating new dossier. Please contact administartor.', 'danger');
             }
             else{
-                console.log(data);
+                $state.go('dossier', {dossierId: result.data});
             }
         });
     };

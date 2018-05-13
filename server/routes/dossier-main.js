@@ -43,16 +43,13 @@ router.post('/', function(req, res, next){
         var dossierPath = path.join(config.DRAFTS_PATH, dossierId.toString(), curSequence.Name);
         Folder.copyAll(templatePath, dossierPath)
         .then(function(){
-            console.log('success!');
             res.send(dossierId);
         })
         .catch(function(err){
-            console.log(err);
             res.status(500).send(err); 
         });
     })
     .catch(function(err){
-        console.log(err);
         res.status(500).send(err); 
     });
 });
