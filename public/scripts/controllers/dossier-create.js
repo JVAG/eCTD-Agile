@@ -6,25 +6,27 @@ var app = angular.module('ectdApp')
     this.versions = ['3.2'];
     this.today = new Date();
     this.dossier = {
-        drugSubstances: [{}],
-        region: this.regions[0],
-        applicationType: this.applicationTypes[0],
-        version: this.versions[0]
+        DrugSubstances: [{}],
+        Region: this.regions[0],
+        ApplicationType: this.applicationTypes[0],
+        EctdVersion: this.versions[0],
+        DosageForm: this.dosageForms[0]
     };
 
     this.addDrugSubstance = function(){
-        this.dossier.drugSubstances.push({});
+        this.dossier.DrugSubstances.push({});
     };
     this.removeDrugSubstance = function(index){
-        this.dossier.drugSubstances.splice(index, 1); 
+        this.dossier.DrugSubstances.splice(index, 1); 
     }
     this.submitNewDossier = function(){
-        this.dossier = DossierService.setDateCreated(this.dossier);
-        this.dossier = DossierService.setDateModified(this.dossier);
         this.dossier = DossierService.setOwner(this.dossier);
         this.dossier = DossierService.addSequence(this.dossier);
         DossierService.createNewDossier(this.dossier, function(err, data){
-            if(err){
+            if(err && err.data && err.data.message){
+                notifications.addAlert( err.data.message + ' Please contact administartor if error persists.', 'danger');
+            }
+            else if(err){
                 notifications.addAlert('Error in creating new dossier. Please contact administartor.', 'danger');
             }
             else{

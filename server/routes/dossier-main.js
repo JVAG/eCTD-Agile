@@ -1,13 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var Dossier = require('../models/dossier-model');
+var path = require('path');
 
-var BASE_PATH_MAC = '/Users/snehalindurkar/Desktop/Project eCTD/Dossiers';
-var BASE_PATH_WIN = 'C:/Dossiers/';
-var BASE_PATH = BASE_PATH_WIN;
-if(process.platform == 'darwin'){
-  BASE_PATH = BASE_PATH_MAC;
-}
+var config = require('../config');
+var Dossier = require('../models/dossier-model');
+var Sequence = require('../models/sequence-model');
 
 /**
  * Return thge dossier with given id
@@ -36,18 +33,21 @@ router.get('/', function(req, res) {
  * @bodyparam {DossierObject} dossier objevt to be saved in the database
  */
 router.post('/', function(req, res, next){
-    var dossier = new Dossier({
-        Title: req.body.title,
-        Applicant: req.body.applicant
-    });
-    dossier.save(function(err) {
-        if(err){
-            res.status(500).send(err); 
-        }
-        else {
-            res.status(200).json({'dossier' : dossier});
-        }
+    Dossier.create(req.body)
+    .then(function(dossier){
+        var dossierId = dossier._id;
+        var curSequence = Sequence.getCurSequence(dossier.Sequences);
+        var templatePath = getTemplatePath(dossier);
+        res.send(dossierId);
+    })
+    .catch(function(err){
+        res.status(500).send(err); 
     });
 });
+
+function getTemplatePath(dossier){
+    var folder = dossier.Region + '-' + dossier.ApplicationType + '-ectd' + dossier.EctdVersion;
+    return path.join(config.TEMPLATES_PATH, folder);
+}
 module.exports = router;
 

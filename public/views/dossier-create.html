@@ -10,14 +10,14 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Title</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" ng-model="dcctrl.dossier.title" name="title" required>
+                                <input type="text" class="form-control" ng-model="dcctrl.dossier.Title" name="title" required>
                             </div>
                             <span class="text-danger col-sm-3" ng-show="!dcctrl.form.title.$valid">*Can not be empty</span>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Description:</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text" ng-model="dcctrl.dossier.description"/>  
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.Description"/>  
                             </div>
                         </div>
                         <div class="form-group">
@@ -25,7 +25,7 @@
                             <div class="col-sm-6">
                                 <select class="form-control"
                                     ng-options="region for region in dcctrl.regions"
-                                    ng-model="dcctrl.dossier.region">
+                                    ng-model="dcctrl.dossier.Region">
                                 </select>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             <div class="col-sm-6">
                                 <select class="form-control"
                                     ng-options="applicationType for applicationType in dcctrl.applicationTypes"
-                                    ng-model="dcctrl.dossier.applicationType">
+                                    ng-model="dcctrl.dossier.ApplicationType">
                                 </select>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             <div class="col-sm-6">
                                 <select class="form-control"
                                     ng-options="version for version in dcctrl.versions"
-                                    ng-model="dcctrl.dossier.version">
+                                    ng-model="dcctrl.dossier.EctdVersion">
                                 </select>
                             </div>
                         </div>
@@ -52,15 +52,14 @@
                             <div class="col-sm-6">
                                 <select class="form-control" 
                                     ng-options="dosage for dosage in dcctrl.dosageForms"
-                                    ng-init="dcctrl.dossier.dosageForm = dcctrl.dossier.dosageForm || dcctrl.dosageForms[0]"
-                                    ng-model="dcctrl.dossier.dosageForm">
+                                    ng-model="dcctrl.dossier.DosageForm">
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Applicant:</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text" ng-model="dcctrl.dossier.applicant" name="applicant" required/>
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.Applicant" name="applicant" required/>
                             </div>
                             <span class="text-danger col-sm-3" ng-show="!dcctrl.form.applicant.$valid">*Can not be empty</span>
                         </div>
@@ -68,7 +67,7 @@
                             <label class="col-sm-3 control-label">Due Date:</label>
                             <div class="col-sm-6">
                                 <input class="form-control" type="date" placeholder="mm/dd/yyyy" name="dueDate"
-                                    ng-model="dcctrl.dossier.dueDate"
+                                    ng-model="dcctrl.dossier.DueDate"
                                     ng-min="dcctrl.today" 
                                     required/>
                             </div>
@@ -86,7 +85,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Brand Name:</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text" ng-model="dcctrl.dossier.productBrandName" 
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.ProductBrandName" 
                                     name="productBrandName" required/>
                             </div>
                             <span class="text-danger col-sm-3" ng-show="!dcctrl.form.productBrandName.$valid">*Can not be empty</span>
@@ -94,7 +93,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Generic Name:</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text" ng-model="dcctrl.dossier.productGenericName" 
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.ProductGenericName" 
                                     name="productGenericName" required/>
                             </div>
                             <span class="text-danger col-sm-3" ng-show="!dcctrl.form.productGenericName.$valid">*Can not be empty</span>
@@ -102,7 +101,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Manufacturer: </label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text" ng-model="dcctrl.dossier.productManufacturer" 
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.ProductManufacturer" 
                                 name="productManufacturer" required/>
                             </div>
                             <span class="text-danger col-sm-3" ng-show="!dcctrl.form.productManufacturer.$valid">*Can not be empty</span>
@@ -110,7 +109,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">ATC code: </label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text" ng-model="dcctrl.dossier.atcCode" 
+                                <input class="form-control" type="text" ng-model="dcctrl.dossier.AtcCode" 
                                 name="atcCode" ng-pattern="'[A-Za-z0-9]+$'" required/>
                             </div>
                             <div class="col-sm-3">
@@ -128,14 +127,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Drug Substances</div>
                     <div class="panel-body">
-                        <div ng-repeat="ds in dcctrl.dossier.drugSubstances">
+                        <div ng-repeat="ds in dcctrl.dossier.DrugSubstances">
                             <label class="col-sm-1 control-label">Name: </label>
                             <div class="col-sm-4">
-                                <input class="form-control" type="text" ng-model="ds.name"/>
+                                <input class="form-control" type="text" ng-model="ds.Name"/>
                             </div>
                             <label class="col-sm-2 control-label">Manufacturer: </label>
                             <div class="col-sm-4">
-                                <input class="form-control" type="text" ng-model="ds.manufacturer"/>
+                                <input class="form-control" type="text" ng-model="ds.Manufacturer"/>
                             </div>
                             <div class="col-sm-1">
                                 <button class="btn btn-danger pull-right" ng-click="dcctrl.removeDrugSubstance($index)">-</button>

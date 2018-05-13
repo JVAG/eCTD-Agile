@@ -4,23 +4,18 @@ var app = angular.module('ectdApp')
         this.setDossier = function(pDossier){
             dossier = pDossier;
         }
-        this.setDateCreated = function(dossier){
-            dossier.dateCreated = new Date();
-            return dossier;
-        };
-        this.setDateModified = function(dossier){
-            dossier.dateModified = new Date();
-            return dossier;
-        };
         this.setOwner = function(dossier, user = "Currently Logged User"){
-            dossier.onwer = user;
+            dossier.Owner = user;
             return dossier;
         };
-        this.addSequence = function(dossier, newSequence = '0000'){
-            if(!dossier.sequences){
-                dossier.sequences = [newSequence];
+        this.addSequence = function(dossier, newSequence){
+            if(!newSequence){
+                newSequence = { Name: '0000', Description:'Inital Submission' }
             }
-            else{
+            if(!dossier.sequences){
+                dossier.Sequences = [newSequence];
+            }
+            else {
                 dossier.sequences.push(newSequence);
             }
             return dossier;
