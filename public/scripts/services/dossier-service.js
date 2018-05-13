@@ -43,15 +43,13 @@ var app = angular.module('ectdApp')
                 });
         };
 
-        this.getDossierById = function(callback){
-            console.log('In DossierService.getDossierById');
-            $http.get('/dossier/123').then(
+        this.getDossierById = function(dossierId, callback){
+            var url = '/dossier/' + dossierId;
+            $http.get(url).then(
                 function(data) {
-                    console.log(data);
                     callback(null, data);
                 }, 
                 function(error) {
-                    console.error(error.status, error.statusText);
                     callback(error);
                 });
         };

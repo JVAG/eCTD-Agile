@@ -11,6 +11,7 @@ var app = angular.module('ectdApp')
         ApplicationType: this.applicationTypes[0],
         EctdVersion: this.versions[0],
         DosageForm: this.dosageForms[0]
+
         /* DEV MODE */
         ,DueDate: this.today
         ,AtcCode: 'abc123'
@@ -30,6 +31,9 @@ var app = angular.module('ectdApp')
     this.submitNewDossier = function(){
         this.dossier = DossierService.setOwner(this.dossier);
         this.dossier = DossierService.addSequence(this.dossier);
+        if(!this.dossier.DrugSubstances[0].Name && !this.dossier.DrugSubstances[0].Manufacturer){
+            this.dossier.DrugSubstances.splice(0,1);
+        }
         DossierService.createNewDossier(this.dossier, function(err, result){
             if(err && err.data && err.data.message){
                 notifications.addAlert( err.data.message + ' Please contact administartor if error persists.', 'danger');

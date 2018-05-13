@@ -15,8 +15,14 @@ var Folder = require('../models/folder-api');
  * @returns {DossierObject} dosssier-object
  */
 router.get('/:id', function(req, res){
-    console.log("Testing /dossier/:id get route. params: ", req.params);
-    res.send('Returned one dossier with id ', req.params.id);
+    var dossierId = req.params.id;
+    Dossier.findOne({_id: dossierId})
+        .then(function(result){
+            res.send(result);
+        })
+        .catch(function(err){
+            res.status(500).send(err); 
+        });
 });
 
 /**
