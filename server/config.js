@@ -9,6 +9,6 @@ if(process.platform == 'darwin'){
 }
 
 config.TEMPLATES_PATH = path.join(config.BASE_PATH, 'templates');
-config.DRAFT_PATH = path.join(config.BASE_PATH, 'drafts');
+config.DRAFTS_PATH = path.join(config.BASE_PATH, 'drafts');
 
 module.exports = config;

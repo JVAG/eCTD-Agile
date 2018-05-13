@@ -11,6 +11,14 @@ var app = angular.module('ectdApp')
         ApplicationType: this.applicationTypes[0],
         EctdVersion: this.versions[0],
         DosageForm: this.dosageForms[0]
+        /* DEV MODE */
+        ,DueDate: this.today
+        ,AtcCode: 'abc123'
+        ,Title: 'test'
+        ,Applicant: 'Biznisss llc'
+        ,ProductBrandName: 'tylonol'
+        ,ProductGenericName: 'acetaphenomin'
+        ,ProductManufacturer: 'walgreens equate'
     };
 
     this.addDrugSubstance = function(){
