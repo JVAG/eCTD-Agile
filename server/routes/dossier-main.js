@@ -21,6 +21,7 @@ router.get('/:id', function(req, res){
             res.send(result);
         })
         .catch(function(err){
+            console.log(err);
             res.status(500).send(err); 
         });
 });
@@ -56,6 +57,7 @@ router.post('/', function(req, res, next){
         });
     })
     .catch(function(err){
+        console.log(err);
         res.status(500).send(err); 
     });
 });
