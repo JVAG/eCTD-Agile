@@ -9,7 +9,7 @@ Plan is to discard the old code and doing this in agile and Test-Driven-Developm
 
 ## Getting Set Up
 
-* 1. To clone this repo, run `git clone https://github.com/JVAG/eCTD-Agile/issues`
+* 1. To clone this repo, run `git clone https://github.com/JVAG/eCTD-Agile`
 * 2. `cd` into the newly cloned project
 * 3. install NPM dependencies via `npm install`
 * 4. install Bower dependencies via `bower install`
