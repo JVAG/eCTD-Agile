@@ -1,0 +1,28 @@
+{
+  "name": "ectd-agile",
+  "description": "eCTD web application using agile methodology and test driven development",
+  "main": "server.js",
+  "authors": [
+    "Snehal Indurkar",
+    "Gauri Kasture",
+    "Samiksha Gautam"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/JVAG/eCTD-Agile",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^2.5.0",
+    "angular-ui-router": "^1.0.15",
+    "angular": "^1.6.10",
+    "bootstrap": "3",
+    "jquery": "3",
+    "ng-js-tree": "^0.0.10"
+  }
+}
