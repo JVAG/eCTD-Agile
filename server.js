@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/lib', express.static('bower_components'));
 
-mongoose.connect('mongodb://localhost:27017/meandb', function(err) {
+mongoose.connect('mongodb://localhost:27017/ectd2', function(err) {
     if(err){
         console.log('Not connected to database ', err);
     }

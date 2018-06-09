@@ -38,7 +38,7 @@ var app = angular.module('ectdApp')
             if(err && err.data && err.data.message){
                 notifications.addAlert( err.data.message + ' Please contact administartor if error persists.', 'danger');
             }
-            else if(err || !result || !result.data){
+            else if(!result || !result.data){
                 notifications.addAlert('Error in creating new dossier. Please contact administartor.', 'danger');
             }
             else{

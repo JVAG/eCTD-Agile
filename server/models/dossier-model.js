@@ -24,7 +24,20 @@ var DossierSchema = new Schema({
         Name: String,
         Manufacturer: String
     }]
-})
+}, 
+{
+    toObject: {
+        virtuals: true
+    },
+    toJSON: {
+        virtuals: true 
+    }
+  }
+);
+
+DossierSchema.virtual('currentSequence').get(function(){
+    return this.Sequences[this.Sequences.length -1];
+});
 
 var DossierModel = mongoose.model('Dossier', DossierSchema);
 module.exports = DossierModel;

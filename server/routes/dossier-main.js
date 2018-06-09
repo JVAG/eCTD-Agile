@@ -1,12 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var path = require('path');
 
-
-var config = require('../config');
 var Dossier = require('../models/dossier-model');
-var Sequence = require('../models/sequence-model');
-var Folder = require('../models/folder-api');
+var Sequence = require('../models/sequence-api');
 
 /**
  * Return thge dossier with given id
@@ -45,16 +41,11 @@ router.post('/', function(req, res, next){
     Dossier.create(req.body)
     .then(function(dossier){
         var dossierId = dossier._id;
-        var curSequence = Sequence.getCurSequence(dossier.Sequences);
-        var templatePath = getTemplatePath(dossier);
-        var dossierPath = path.join(config.DRAFTS_PATH, dossierId.toString(), curSequence.Name);
-        Folder.copyAll(templatePath, dossierPath)
-        .then(function(){
-            res.send(dossierId);
-        })
-        .catch(function(err){
-            res.status(500).send(err); 
-        });
+        return Sequence.AddSequence(dossier.toObject());      
+    })
+    .then(function(data){
+        console.log("New Dossier created by id " + data.dossier._id);
+        res.send(data.dossier._id); 
     })
     .catch(function(err){
         console.log(err);
@@ -62,9 +53,6 @@ router.post('/', function(req, res, next){
     });
 });
 
-function getTemplatePath(dossier){
-    var folder = dossier.Region + '-' + dossier.ApplicationType + '-ectd' + dossier.EctdVersion;
-    return path.join(config.TEMPLATES_PATH, folder);
-}
+
 module.exports = router;
 
