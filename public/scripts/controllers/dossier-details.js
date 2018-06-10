@@ -4,7 +4,7 @@ var app = angular.module('ectdApp')
 
         var self = this;
         self.dossierId = $stateParams.dossierId;
-        self.dossier = 'test';
+        self.title = 'loading dossier details';
 
         DossierService.getDossierById(this.dossierId, function(err, result){
             if(err){
@@ -12,7 +12,11 @@ var app = angular.module('ectdApp')
             }
             else {
                 console.log(result.data);
-                self.dossier = JSON.stringify(result.data);
+                self.title = createTitle(result.data);
             }
         });
+
+        function createTitle(dossier){
+            return dossier.ProductBrandName + "(" + dossier.ProductGenericName + ")";
+        }
 }]);
