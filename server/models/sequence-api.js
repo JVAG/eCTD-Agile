@@ -10,7 +10,7 @@ module.exports.AddSequence = function(dossier){
     /* Copy template to current sequence folder */
     var templatePath = getTemplatePath(dossier);
 
-    var dossierPath = path.join(config.DRAFTS_PATH, dossier._id.toString(), dossier.currentSequence.Name);
+    var dossierPath = getDossierPath(dossier);
     
     return new Promise(function(resolve, reject){
         fscopy(templatePath, dossierPath)
@@ -25,6 +25,10 @@ module.exports.AddSequence = function(dossier){
         });
     });
 };
+
+function getDossierPath(dossier){
+    return path.join(config.DRAFTS_PATH, dossier._id.toString(), dossier.currentSequence.Name);;
+}
 
 function getTemplatePath(dossier){
     var folder = dossier.Region + '-' + dossier.ApplicationType + '-ectd' + dossier.EctdVersion;
