@@ -4,15 +4,15 @@ var app = angular.module('ectdApp')
 
         var self = this;
         self.dossierId = $stateParams.dossierId;
-        self.title = 'loading dossier details';
+        self.title = 'Loading Dossier Details...';
 
         DossierService.getDossierById(this.dossierId, function(err, result){
             if(err){
                 notifications.addAlert('Error in retrieving dossier data. Please contact administartor.', 'danger');
             }
             else {
-                console.log(result.data);
-                self.title = createTitle(result.data);
+                console.log(result.folderTree);
+                self.title = createTitle(result.dossier);
             }
         });
 

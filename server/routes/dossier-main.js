@@ -14,7 +14,12 @@ router.get('/:id', function(req, res){
     var dossierId = req.params.id;
     Dossier.findOne({_id: dossierId})
         .then(function(result){
-            res.send(result);
+            var dossier = result.toObject();
+            var folderTree = { test: 1} ;
+            res.send({
+                dossier: dossier,
+                folderTree: folderTree
+            });
         })
         .catch(function(err){
             res.status(500).send(err); 
