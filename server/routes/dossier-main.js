@@ -15,11 +15,16 @@ router.get('/:id', function(req, res){
     Dossier.findOne({_id: dossierId})
         .then(function(result){
             var dossier = result.toObject();
-            var folderTree = { test: 1} ;
-            res.send({
-                dossier: dossier,
-                folderTree: folderTree
-            });
+            Sequence.GetSequence(dossier)
+            .then(function(folderData){
+                res.send({
+                    dossier: dossier,
+                    folderTree: folderData
+                });
+            })
+            .catch(function(err){
+                console.error(err);
+            })
         })
         .catch(function(err){
             res.status(500).send(err); 

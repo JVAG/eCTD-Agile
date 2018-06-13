@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var fs = require('fs');
 var fscopy = require('recursive-copy');
+var dirToJson = require('dir-to-json');
 
 var config = require('../config');
 var Folder = require('../models/folder-api');
@@ -24,6 +25,11 @@ module.exports.AddSequence = function(dossier){
             reject(err);
         });
     });
+};
+
+module.exports.GetSequence = function(dossier){
+    var dossierPath = getDossierPath(dossier);
+    return dirToJson(dossierPath);
 };
 
 function getDossierPath(dossier){

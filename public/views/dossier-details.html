@@ -3,11 +3,19 @@
         <h3 class="text-center text-primary">{{ddctrl.title}}</h3>
         <hr/>
         <div class="col-md-3">
-            <div id="dossier_tree"></div>
+            <h5>{{ddctrl.folderTree.name}}</h5>
+            <div class="hideMe">
+                {{ddctrl.folderTree}}
+            </div>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            Selected File to be displayed here
+        </div>
         <div class="col-md-3">
-            <p>{{ddctrl.dossierId}}</p>
+            <h4>{{ddctrl.dossier.Title}}</h4>
+            <div class="hideMe">
+                {{ddctrl.dossier}}
+            </div>
         </div>
     </div>
 </div>

@@ -5,6 +5,7 @@ var app = angular.module('ectdApp')
         var self = this;
         self.dossierId = $stateParams.dossierId;
         self.title = 'Loading Dossier Details...';
+        self.folderTree = {};
 
         DossierService.getDossierById(this.dossierId, function(err, result){
             if(err){
@@ -13,6 +14,8 @@ var app = angular.module('ectdApp')
             else {
                 console.log(result.folderTree);
                 self.title = createTitle(result.dossier);
+                self.folderTree = result.folderTree;
+                self.dossier = result.dossier;
             }
         });
 
