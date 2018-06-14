@@ -202,22 +202,22 @@ function createXMLMapping(){
     xmlmap['m4/42-stud-rep/423-tox'] = new FolderData('Toxicology', 'm4-2-3-toxicology');
     xmlmap['m4/42-stud-rep/423-tox/4231-single-dose-tox'] = new FolderData('Single-Dose Toxicity (in order by species, by route)', 'm4-2-3-1-single-dose-toxicit');
     xmlmap['m4/42-stud-rep/423-tox/4231-single-dose-tox/study-report-1.pdf'] = new FolderData('Study Report 1', 'm4-2-3-1-single-dose-toxicity');
-//     /* 4 */
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
+
+    xmlmap['m4/42-stud-rep/423-tox/4231-single-dose-tox/study-report-2.pdf'] = new FolderData('Study Report 2', 'm4-2-3-1-single-dose-toxicity');
+    xmlmap['m4/42-stud-rep/423-tox/4231-single-dose-tox/study-report-3.pdf'] = new FolderData('Study Report 3', 'm4-2-3-1-single-dose-toxicity');
+    xmlmap['m4/42-stud-rep/423-tox/4232-repeat-dose-tox'] = new FolderData('Repeat-Dose Toxicity', 'm4-2-3-2-repeat-dose-toxicity');
+    xmlmap['m4/42-stud-rep/423-tox/4232-repeat-dose-tox/study-report-1.pdf'] = new FolderData('Study Report 1', 'm4-2-3-2-repeat-dose-toxicity');
+    xmlmap['m4/42-stud-rep/423-tox/4232-repeat-dose-tox/study-report-2.pdf'] = new FolderData('Study Report 2', 'm4-2-3-2-repeat-dose-toxicity');
+    xmlmap['m4/42-stud-rep/423-tox/4232-repeat-dose-tox/study-report-3.pdf'] = new FolderData('Study Report 3', 'm4-2-3-2-repeat-dose-toxicity');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox'] = new FolderData('Genotoxicity', 'm4-2-3-3-genotoxicity');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox/42331-in-vitro'] = new FolderData('In vitro', 'm4-2-3-3-1-in-vitro');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox/42331-in-vitro/study-report-1.pdf'] = new FolderData('Study Report 1', 'm4-2-3-3-1-in-vitro');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox/42331-in-vitro/study-report-2.pdf'] = new FolderData('Study Report 2', 'm4-2-3-3-1-in-vitro');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox/42331-in-vitro/study-report-3.pdf'] = new FolderData('Study Report 3', 'm4-2-3-3-1-in-vitro');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox/42332-in-vivo'] = new FolderData('In vivo', 'm4-2-3-3-2-in-vivo');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox/42332-in-vivo/study-report-1.pdf'] = new FolderData('Study Report 1', 'm4-2-3-3-2-in-vivo');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox/42332-in-vivo/study-report-2.pdf'] = new FolderData('Study Report 2', 'm4-2-3-3-2-in-vivo');
+    xmlmap['m4/42-stud-rep/423-tox/4233-genotox/42332-in-vivo/study-report-3.pdf'] = new FolderData('Study Report 3', 'm4-2-3-3-2-in-vivo');
 //     /* 5 */
 //     xmlmap[''] = new FolderData('', '');
 //     xmlmap[''] = new FolderData('', '');
