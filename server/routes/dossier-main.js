@@ -11,22 +11,35 @@ var Sequence = require('../models/sequence-api');
  * @returns {DossierObject} dosssier-object
  */
 router.get('/:id', function(req, res){
+    function mapTreeNodes(node){
+        var newNode = { "id": node.name, "text":node.name };
+        if(node.parent){
+            newNode["parent"] = node.parent;
+        }
+        if(node.type == 'file'){
+          newNode["icon"] = "jstree-file";
+        }
+        if(node.children){
+            newNode.children = node.children.map(mapTreeNodes);
+        }
+        return newNode;
+    }
+
     var dossierId = req.params.id;
     Dossier.findOne({_id: dossierId})
         .then(function(result){
             var dossier = result.toObject();
-            Sequence.GetSequence(dossier)
+            return Sequence.GetSequence(dossier)
             .then(function(folderData){
+                var dirTree = folderData.children.map(mapTreeNodes);
                 res.send({
                     dossier: dossier,
-                    folderTree: folderData
+                    folderTree: dirTree
                 });
-            })
-            .catch(function(err){
-                console.error(err);
             })
         })
         .catch(function(err){
+            console.error(err);
             res.status(500).send(err); 
         });
 });

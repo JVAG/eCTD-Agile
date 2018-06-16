@@ -4,8 +4,18 @@
         <hr/>
         <div class="col-md-3">
             <h5>{{ddctrl.folderTree.name}}</h5>
-            <div class="hideMe">
-                {{ddctrl.folderTree}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Dossier Tree
+                </div>
+                <div class="panel-body">
+                    <div js-tree="ddctrl.treeConfig" 
+                        should-apply="ddctrl.applyModelChanges()" 
+                        ng-model="ddctrl.treeData" 
+                        tree="ddctrl.treeInstance" 
+                        tree-events-obj="ddctrl.treeEventsObj">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
