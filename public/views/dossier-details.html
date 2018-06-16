@@ -3,11 +3,29 @@
         <h3 class="text-center text-primary">{{ddctrl.title}}</h3>
         <hr/>
         <div class="col-md-3">
-            <div id="dossier_tree"></div>
+            <h5>{{ddctrl.folderTree.name}}</h5>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Dossier Tree
+                </div>
+                <div class="panel-body">
+                    <div js-tree="ddctrl.treeConfig" 
+                        should-apply="ddctrl.applyModelChanges()" 
+                        ng-model="ddctrl.treeData" 
+                        tree="ddctrl.treeInstance" 
+                        tree-events-obj="ddctrl.treeEventsObj">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            Selected File to be displayed here
+        </div>
         <div class="col-md-3">
-            <p>{{ddctrl.dossierId}}</p>
+            <h4>{{ddctrl.dossier.Title}}</h4>
+            <div class="hideMe">
+                {{ddctrl.dossier}}
+            </div>
         </div>
     </div>
 </div>

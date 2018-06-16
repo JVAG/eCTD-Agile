@@ -1,4 +1,4 @@
-var app = angular.module('ectdApp', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('ectdApp', ['ui.router', 'ui.bootstrap', 'ngJsTree']);
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/invalid');
     $stateProvider

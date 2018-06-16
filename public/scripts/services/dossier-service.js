@@ -27,6 +27,7 @@ var app = angular.module('ectdApp')
                     callback(null, result);
                 }, 
                 function(error) {
+                    console.error(error);
                     callback(error);
                 });
         };
@@ -38,7 +39,7 @@ var app = angular.module('ectdApp')
                     callback(null, data);
                 }, 
                 function(error) {
-                    console.error('Error: ', error);
+                    console.error(error);
                     callback(error);
                 });
         };
@@ -47,9 +48,20 @@ var app = angular.module('ectdApp')
             var url = '/dossier/' + dossierId;
             $http.get(url).then(
                 function(data) {
-                    callback(null, data);
+                    if(data.data && data.data.dossier && data.data.folderTree){
+                        callback(null, {
+                            dossier: data.data.dossier,
+                            folderTree: data.data.folderTree
+                        });
+                    }
+                    else{
+                        var error = new Error("Could not retrieve dossier or folder tree");
+                        console.error(error);
+                        callback(error);
+                    }
                 }, 
                 function(error) {
+                    console.error(error);
                     callback(error);
                 });
         };

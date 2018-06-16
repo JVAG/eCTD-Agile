@@ -2,15 +2,16 @@ var express = require('express');
 var path = require('path');
 var fs = require('fs');
 var fscopy = require('recursive-copy');
+var dirToJson = require('dir-to-json');
 
 var config = require('../config');
 var Folder = require('../models/folder-api');
 
 module.exports.AddSequence = function(dossier){
     /* Copy template to current sequence folder */
-    var templatePath = getTemplatePath(dossier);
+    var templatePath = GetTemplatePath(dossier);
 
-    var dossierPath = path.join(config.DRAFTS_PATH, dossier._id.toString(), dossier.currentSequence.Name);
+    var dossierPath = GetDossierPath(dossier);
     
     return new Promise(function(resolve, reject){
         fscopy(templatePath, dossierPath)
@@ -26,7 +27,16 @@ module.exports.AddSequence = function(dossier){
     });
 };
 
-function getTemplatePath(dossier){
+module.exports.GetSequence = function(dossier){
+    var dossierPath = GetDossierPath(dossier);
+    return dirToJson(dossierPath);
+};
+
+function GetDossierPath(dossier){
+    return path.join(config.DRAFTS_PATH, dossier._id.toString(), dossier.currentSequence.Name);;
+}
+
+function GetTemplatePath(dossier){
     var folder = dossier.Region + '-' + dossier.ApplicationType + '-ectd' + dossier.EctdVersion;
     return path.join(config.TEMPLATES_PATH, folder);
 }

@@ -23,6 +23,10 @@
     "angular": "^1.6.10",
     "bootstrap": "3",
     "jquery": "3",
-    "ng-js-tree": "^0.0.10"
+    "ng-js-tree": "^0.0.10",
+    "jstree": "^3.3.5"
+  },
+  "resolutions": {
+    "angular": "^1.6.10"
   }
 }

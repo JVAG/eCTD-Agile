@@ -416,8 +416,8 @@ function createXMLMapping(){
         var xmlMappinArray = convertToArray(xmlmap);
         return InsertAll(xmlMappinArray);
     })
-    .then(function(result){
-        console.log(result.length + " xml element mappings added");
+    .then(function(XMLMappings){
+        console.log(XMLMappings.length + " xml mappings added.");
     })
     .catch(function(err){
         console.error(err);
