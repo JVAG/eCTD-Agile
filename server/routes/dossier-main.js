@@ -12,7 +12,7 @@ var Sequence = require('../models/sequence-api');
  */
 router.get('/:id', function(req, res){
     function mapTreeNodes(node){
-        var newNode = { "id": node.name, "text":node.name };
+        var newNode = { "id": node.name, "text": node.name, type: node.type};
         if(node.parent){
             newNode["parent"] = node.parent;
         }
@@ -77,4 +77,3 @@ router.post('/', function(req, res, next){
 
 
 module.exports = router;
-

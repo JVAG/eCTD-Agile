@@ -3,8 +3,7 @@
         <h3 class="text-center text-primary">{{ddctrl.title}}</h3>
         <hr/>
         <div class="col-md-3">
-            <h5>{{ddctrl.folderTree.name}}</h5>
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     Dossier Tree
                 </div>
@@ -19,12 +18,28 @@
             </div>
         </div>
         <div class="col-md-6">
-            Selected File to be displayed here
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    selected-file.pdf
+                </div>
+                <div class="panel-body">
+                    <code>Contents of selected-file.pdf</code>
+                </div>
+            </div>
         </div>
         <div class="col-md-3">
-            <h4>{{ddctrl.dossier.Title}}</h4>
-            <div class="hideMe">
-                {{ddctrl.dossier}}
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Folder Metadata: {{ddctrl.selectedFolder}}
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group" ng-repeat="key in ddctrl.dossierKeys">
+                            <label>{{key}}:</label>
+                            <input class="form-control" type="text" value="{{ddctrl.dossier[key]}}" disabled>
+                        </div> 
+                    </form> 
+                </div>
             </div>
         </div>
     </div>
