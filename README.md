@@ -6,6 +6,7 @@ Plan is to discard the old code and doing this in agile and Test-Driven-Developm
 * 1. [Git](https://git-scm.com/)
 * 2. [Node/NPM](https://nodejs.org/en/)
 * 3. [Bower](http://bower.io/)
+* 4. [Mongodb](https://www.mongodb.com/download-center#community)
 
 ## Getting Set Up
 
