@@ -12,6 +12,7 @@ Plan is to discard the old code and doing this in agile and Test-Driven-Developm
 * 1. To clone this repo, run `git clone https://github.com/JVAG/eCTD-Agile`
 * 2. cd into the newly cloned project by running `cd eCTD-Agile`
 * 3. The default branch is master. Checkout the branch you want to test e.g. `git checkout test-v1` or `git checkout dev-snehal`
+* 4. Unzip all zip files in server/templates into the folders with same name
 
 ## Running
 * 1. node server.js
