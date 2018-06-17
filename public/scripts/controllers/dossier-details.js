@@ -12,8 +12,9 @@ var app = angular.module('ectdApp')
             }
             else {
                 self.title = createTitle(result.dossier);
-                self.dossier = result.dossier;
+                self.createDossierDisplayObj(result.dossier);
                 self.createDossierTree(result.folderTree);
+                self.selectedFolder = result.dossier.Title;
             }
         });
 
@@ -22,7 +23,7 @@ var app = angular.module('ectdApp')
         }
 
         self.createDossierTree = function(folderTree){
-            
+
             self.treeData = folderTree;
 
             self.treeConfig = {
@@ -51,6 +52,9 @@ var app = angular.module('ectdApp')
                     var file = selected.node;
                     $log.info('Selected File: ');
                 }
+                else {
+                    self.selectedFolder = selected.node.text;
+                }
             };
             self.treeEventsObj = {
                 'ready': self.readyCB,
@@ -62,4 +66,26 @@ var app = angular.module('ectdApp')
         self.addNewNode = function(id){
             self.treeData.push({ id : id, parent : 'ajson3', text : 'File 1' , 'icon': 'jstree-file' });
         }
+
+        self.createDossierDisplayObj = function(dossierData){
+            self.dossier = {
+                'Title' : dossierData.Title,
+                'Description': dossierData.Description,
+                'Region': dossierData.Region,
+                'Application Type': dossierData.ApplicationType,
+                'eCTD Version': dossierData.EctdVersion,
+                'Dosage Form': dossierData.DosageForm,
+                'Applicant' : dossierData.Applicant,
+                'Due Date': DossierService.dateToDisplay(dossierData.DueDate),
+                'Date Created': DossierService.dateToDisplay(dossierData.DateCreated),
+                'Date Modified': DossierService.dateToDisplay(dossierData.DateModified),
+                'Drug Product Brand Name': dossierData.ProductBrandName,
+                'Drug Product Generic Name': dossierData.ProductGenericName,
+                'Drug Product Manufacturer': dossierData.ProductManufacturer,
+                'ATC Code': dossierData.AtcCode
+            };
+            self.dossierKeys = Object.keys(self.dossier);
+        }
+
+
 }]);
