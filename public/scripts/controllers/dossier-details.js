@@ -70,15 +70,15 @@ var app = angular.module('ectdApp')
         self.createDossierDisplayObj = function(dossierData){
             self.dossier = {
                 'Title' : dossierData.Title,
-                'Description': dossierData.Title,
+                'Description': dossierData.Description,
                 'Region': dossierData.Region,
                 'Application Type': dossierData.ApplicationType,
                 'eCTD Version': dossierData.EctdVersion,
                 'Dosage Form': dossierData.DosageForm,
                 'Applicant' : dossierData.Applicant,
-                'Due Date': dossierData.DueDate,
-                'Date Created': dossierData.DateCreated,
-                'Date Modified': dossierData.DateModified,
+                'Due Date': DossierService.dateToDisplay(dossierData.DueDate),
+                'Date Created': DossierService.dateToDisplay(dossierData.DateCreated),
+                'Date Modified': DossierService.dateToDisplay(dossierData.DateModified),
                 'Drug Product Brand Name': dossierData.ProductBrandName,
                 'Drug Product Generic Name': dossierData.ProductGenericName,
                 'Drug Product Manufacturer': dossierData.ProductManufacturer,
@@ -86,4 +86,6 @@ var app = angular.module('ectdApp')
             };
             self.dossierKeys = Object.keys(self.dossier);
         }
+
+
 }]);

@@ -65,4 +65,8 @@ var app = angular.module('ectdApp')
                     callback(error);
                 });
         };
+
+        this.dateToDisplay = function(datestr){
+            return new Date(datestr).toDateString();
+        };
     }]);
