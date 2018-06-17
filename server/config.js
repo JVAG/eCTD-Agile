@@ -8,7 +8,7 @@ if(process.platform == 'darwin'){
     config.BASE_PATH = BASE_PATH_MAC;
 }
 
-config.TEMPLATES_PATH = path.join(config.BASE_PATH, 'templates');
+config.TEMPLATES_PATH = path.join(__dirname, 'templates');
 config.DRAFTS_PATH = path.join(config.BASE_PATH, 'drafts');
 
 module.exports = config;

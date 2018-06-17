@@ -1,12 +1,46 @@
 <div class="container-fluid">
     <div class="row-fluid">
-        <h3 class="text-center text-primary">Dossier Details View</h3>
+        <h3 class="text-center text-primary">{{ddctrl.title}}</h3>
         <hr/>
-        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Dossier Tree
+                </div>
+                <div class="panel-body">
+                    <div js-tree="ddctrl.treeConfig" 
+                        should-apply="ddctrl.applyModelChanges()" 
+                        ng-model="ddctrl.treeData" 
+                        tree="ddctrl.treeInstance" 
+                        tree-events-obj="ddctrl.treeEventsObj">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-md-6">
-            <h4 class="text-center text-primary">Under Developmemt</h4>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    selected-file.pdf
+                </div>
+                <div class="panel-body">
+                    <code>Contents of selected-file.pdf</code>
+                </div>
+            </div>
         </div>
         <div class="col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Folder Metadata: {{ddctrl.selectedFolder}}
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group" ng-repeat="key in ddctrl.dossierKeys">
+                            <label>{{key}}:</label>
+                            <input class="form-control" type="text" value="{{ddctrl.dossier[key]}}" disabled>
+                        </div> 
+                    </form> 
+                </div>
+            </div>
         </div>
     </div>
 </div>

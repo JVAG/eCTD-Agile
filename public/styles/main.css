@@ -18,3 +18,11 @@ ul.nav.navbar-nav > li{
 input.ng-invalid {
     border:1px solid red;
 }
+
+.hideMe{
+    display: none;
+}
+
+li.jstree-open > a > i.jstree-icon {
+    background:url("../images/folder-open-16.png") 0px 0px no-repeat !important;
+}

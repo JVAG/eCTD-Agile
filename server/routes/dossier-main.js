@@ -11,13 +11,35 @@ var Sequence = require('../models/sequence-api');
  * @returns {DossierObject} dosssier-object
  */
 router.get('/:id', function(req, res){
+    function mapTreeNodes(node){
+        var newNode = { "id": node.name, "text": node.name, type: node.type};
+        if(node.parent){
+            newNode["parent"] = node.parent;
+        }
+        if(node.type == 'file'){
+          newNode["icon"] = "jstree-file";
+        }
+        if(node.children){
+            newNode.children = node.children.map(mapTreeNodes);
+        }
+        return newNode;
+    }
+
     var dossierId = req.params.id;
     Dossier.findOne({_id: dossierId})
         .then(function(result){
-            res.send(result);
+            var dossier = result.toObject();
+            return Sequence.GetSequence(dossier)
+            .then(function(folderData){
+                var dirTree = folderData.children.map(mapTreeNodes);
+                res.send({
+                    dossier: dossier,
+                    folderTree: dirTree
+                });
+            })
         })
         .catch(function(err){
-            console.log(err);
+            console.error(err);
             res.status(500).send(err); 
         });
 });
@@ -55,4 +77,3 @@ router.post('/', function(req, res, next){
 
 
 module.exports = router;
-
