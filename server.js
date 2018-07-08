@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var mongoose = require('mongoose');
+var Mongoose = require('mongoose');
 
 process.env.NODE_ENV = 'dev';
 console.log("Node environment :");
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/lib', express.static('bower_components'));
 
-mongoose.connect('mongodb://localhost:27017/ectd2', function(err) {
+Mongoose.createConnection('mongodb://root@localhost:27017/ectd2?authSource=admin', function(err) {
     if(err){
         console.log('Not connected to database ', err);
     }
@@ -41,7 +41,7 @@ app.use(function(err, req, res, next){
     res.status(500).send(err);
 });
 
-var port = process.env.PORT || 3030;
+var port = process.env.PORT || 3000;
 app.listen(port, function(){
     console.log("Server is listening in port " + port);
 });
