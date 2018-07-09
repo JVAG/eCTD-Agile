@@ -60,8 +60,10 @@ router.get('/', function(req, res) {
  * @bodyparam {DossierObject} dossier objevt to be saved in the database
  */
 router.post('/', function(req, res, next){
+    console.log('In Dossier Post');
     Dossier.create(req.body)
     .then(function(dossier){
+        console.log('Created Dossier');
         var dossierId = dossier._id;
         return Sequence.AddSequence(dossier.toObject());      
     })
@@ -70,7 +72,7 @@ router.post('/', function(req, res, next){
         res.send(data.dossier._id); 
     })
     .catch(function(err){
-        console.log(err);
+        console.error('Error in creating dossier', err);
         res.status(500).send(err); 
     });
 });

@@ -8,20 +8,26 @@ var config = require('../config');
 var Folder = require('../models/folder-api');
 
 module.exports.AddSequence = function(dossier){
+    console.log('In AddSequence');
     /* Copy template to current sequence folder */
     var templatePath = GetTemplatePath(dossier);
+    console.log("TemplatePath: " + templatePath);
 
     var dossierPath = GetDossierPath(dossier);
+    console.log("dossierPath: " + dossierPath);
     
     return new Promise(function(resolve, reject){
         fscopy(templatePath, dossierPath)
         .then(function(result){
+            console.log("Draft created from template");
+            
             resolve({
                 foldersCopied: result,
                 dossier: dossier
             });
         })
         .catch(function(err){
+            console.error("Error in creating draft created from template" , err);
             reject(err);
         });
     });

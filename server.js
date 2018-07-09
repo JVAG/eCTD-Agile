@@ -8,6 +8,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 
+process.env.NODE_ENV = 'dev';
+console.log("Node environment :");
+
 /* Importing Server Routes */
 var dossierApi = require('./server/routes/dossier-main');
 
