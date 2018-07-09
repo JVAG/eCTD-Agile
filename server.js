@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/lib', express.static('bower_components'));
 
-Mongoose.createConnection('mongodb://root@localhost:27017/ectd2?authSource=admin', function(err) {
+Mongoose.createConnection('mongodb://root:uymhDsiWFZQ7@localhost:27017/ectd2?authSource=admin', function(err) {
     if(err){
         console.log('Not connected to database ', err);
     }
