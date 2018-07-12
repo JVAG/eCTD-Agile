@@ -38,7 +38,7 @@ app.use(function(err, req, res, next){
     res.status(500).send(err);
 });
 
-var port = process.env.PORT || 3030;
+var port = process.env.PORT || 3000;
 app.listen(port, function(){
     console.log("Server is listening in port " + port);
 });
