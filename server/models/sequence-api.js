@@ -4,8 +4,10 @@ var fs = require('fs');
 var fscopy = require('recursive-copy');
 var dirToJson = require('dir-to-json');
 
-var config = require('../config');
 var Folder = require('../models/folder-api');
+
+const TEMPLATES_PATH = path.join(__dirname, '../templates');
+const DRAFTS_PATH = path.join(__dirname, '../drafts');
 
 module.exports.AddSequence = function(dossier){
     /* Copy template to current sequence folder */
@@ -33,10 +35,17 @@ module.exports.GetSequence = function(dossier){
 };
 
 function GetDossierPath(dossier){
-    return path.join(config.DRAFTS_PATH, dossier._id.toString(), dossier.currentSequence.Name);;
+    if(!fs.existsSync(DRAFTS_PATH)){
+        fs.mkdirSync(DRAFTS_PATH);
+    }
+    return path.join(DRAFTS_PATH, dossier._id.toString(), dossier.currentSequence.Name);
 }
 
-function GetTemplatePath(dossier){
+function GetTemplatePath(dossier) {
     var folder = dossier.Region + '-' + dossier.ApplicationType + '-ectd' + dossier.EctdVersion;
-    return path.join(config.TEMPLATES_PATH, folder);
+    var templateFolder =  path.join(TEMPLATES_PATH, folder);
+    if(!fs.existsSync(templateFolder)){
+        throw new Error("The template " + folder + " does not exist");
+    }
+    return templateFolder;
 }
