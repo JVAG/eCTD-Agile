@@ -63,7 +63,6 @@ router.post('/', function(req, res, next){
     console.log('In Dossier Post');
     Dossier.create(req.body)
     .then(function(dossier){
-        console.log('Created Dossier');
         var dossierId = dossier._id;
         return Sequence.AddSequence(dossier.toObject());      
     })

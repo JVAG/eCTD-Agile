@@ -10,13 +10,10 @@ const TEMPLATES_PATH = path.join(__dirname, '../templates');
 const DRAFTS_PATH = path.join(__dirname, '../drafts');
 
 module.exports.AddSequence = function(dossier){
-    console.log('In AddSequence');
     /* Copy template to current sequence folder */
     var templatePath = GetTemplatePath(dossier);
-    console.log("TemplatePath: " + templatePath);
 
     var dossierPath = GetDossierPath(dossier);
-    console.log("dossierPath: " + dossierPath);
     
     return new Promise(function(resolve, reject){
         fscopy(templatePath, dossierPath)
