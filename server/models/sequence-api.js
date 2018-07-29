@@ -5,26 +5,54 @@ var fscopy = require('recursive-copy');
 var dirToJson = require('dir-to-json');
 
 var Folder = require('../models/folder-api');
+var IndexMapping = require('../models/indexmap-model');
 
 const TEMPLATES_PATH = path.join(__dirname, '../templates');
 const DRAFTS_PATH = path.join(__dirname, '../drafts');
 
 module.exports.AddSequence = function(dossier){
-    console.log('In AddSequence');
     /* Copy template to current sequence folder */
     var templatePath = GetTemplatePath(dossier);
-    console.log("TemplatePath: " + templatePath);
-
     var dossierPath = GetDossierPath(dossier);
-    console.log("dossierPath: " + dossierPath);
     
     return new Promise(function(resolve, reject){
         fscopy(templatePath, dossierPath)
-        .then(function(result){
-            console.log("Draft created from template");
-            
+        .then(function(folderCopyResult){
+            console.log("Draft created from template. Creating file mappings...");
+
+            Folder.GetXmlMappings().then(function(xmlMapResult){
+                var xmlMap = {};
+                xmlMapResult.forEach(xmlMapEntry => {
+                    var xmlEmtryObj = xmlMapEntry.toObject();
+                    xmlMap[xmlEmtryObj.RelativePath] = xmlEmtryObj;
+                });
+                var indexMappings = [];
+                var foldersSkipped = [];
+                folderCopyResult.forEach(function(copyResult){
+                    var fullPath = copyResult.dest;
+                    fullPath = fullPath.replace(/\\/g,"/");
+                    dossierPath = dossierPath.replace(/\\/g,"/");
+                    if(fullPath.startsWith(dossierPath)){
+                        var xmlKey = fullPath.substr(dossierPath.length+1);
+                        var xmlData = xmlMap[xmlKey];
+                        if(xmlData != null){
+                            indexMappings.push(createIndexMapObject(xmlData._id, dossier, dossierPath.substring(0, dossierPath.lastIndexOf('/')), xmlKey));
+                        }
+                        else {
+                            foldersSkipped.push(xmlKey);
+                        }
+                    }
+                });
+                IndexMapping.insertMany(indexMappings).then(function(indexMappingResult){
+                    console.log(indexMappingResult.length + " index mappings added. Skipped: " + foldersSkipped.length);
+                    console.log(foldersSkipped);    
+                    return folderCopyResult;
+                });
+            });
+        })
+        .then(function(folderCopyResult){
             resolve({
-                foldersCopied: result,
+                foldersCopied: folderCopyResult,
                 dossier: dossier
             });
         })
@@ -35,10 +63,33 @@ module.exports.AddSequence = function(dossier){
     });
 };
 
-module.exports.GetSequence = function(dossier){
+module.exports.GetSequence = function(dossier, callback){
     var dossierPath = GetDossierPath(dossier);
-    return dirToJson(dossierPath);
+    dirToJson(dossierPath, function(err, dirTree){
+        if(err){
+            throw err;
+        }
+        else {
+            callback(dirTree);
+        }
+    })
 };
+
+module.exports.GetIndexMap = function(dossierId, callback){
+    IndexMapping.find({DossierId: dossierId}, function(err, result){
+        if(err){
+            console.log(err);
+            throw err;
+        }
+        else{    
+            var indexMap = {};
+            result.forEach(function(row){
+                indexMap[row.DirectoryPath] = row._id;
+            });
+            callback(indexMap);
+        }
+    })
+}
 
 function GetDossierPath(dossier){
     if(!fs.existsSync(DRAFTS_PATH)){
@@ -54,4 +105,15 @@ function GetTemplatePath(dossier) {
         throw new Error("The template " + folder + " does not exist");
     }
     return templateFolder;
+}
+
+function createIndexMapObject( xmlMappingId, dossier, dossierPath, xmlKey ){
+    var obj = {
+        DossierId: dossier._id,
+        Sequence: dossier.currentSequence.Name,
+        RelativePathId: xmlMappingId,
+        DossierPath: dossierPath,
+        DirectoryPath: xmlKey
+    };
+    return obj;
 }

@@ -11,37 +11,43 @@ var Sequence = require('../models/sequence-api');
  * @returns {DossierObject} dosssier-object
  */
 router.get('/:id', function(req, res){
-    function mapTreeNodes(node){
-        var newNode = { "id": node.name, "text": node.name, type: node.type};
+    var dossierId = req.params.id;
+    Dossier.findOne({_id: dossierId})
+    .then(function(result){
+        dossierObj = result.toObject();
+        Sequence.GetSequence(dossierObj, function(folderData){
+            Sequence.GetIndexMap(dossierId, function(indexMap){
+                var dirTree = folderData.children.map(function(node){
+                    return mapTreeNodes(node, indexMap);
+                });
+                res.send({
+                    dossier: dossierObj,
+                    folderTree: dirTree
+                });
+            });
+        });
+    })
+    .catch(function(err){
+        console.log(err.stack);
+        res.status(500).send(err); 
+    });
+
+    function mapTreeNodes(node, indexMap){
+        var indexId = indexMap[node.path] ? indexMap[node.path].toString() : node.name;
+        var newNode = { "id": indexId, "text": node.name, type: node.type, path: node.path };
         if(node.parent){
             newNode["parent"] = node.parent;
         }
         if(node.type == 'file'){
-          newNode["icon"] = "jstree-file";
+            newNode["icon"] = "jstree-file";
         }
         if(node.children){
-            newNode.children = node.children.map(mapTreeNodes);
+            newNode.children = node.children.map(function(node){
+                return mapTreeNodes(node, indexMap);
+            });
         }
         return newNode;
     }
-
-    var dossierId = req.params.id;
-    Dossier.findOne({_id: dossierId})
-        .then(function(result){
-            var dossier = result.toObject();
-            return Sequence.GetSequence(dossier)
-            .then(function(folderData){
-                var dirTree = folderData.children.map(mapTreeNodes);
-                res.send({
-                    dossier: dossier,
-                    folderTree: dirTree
-                });
-            })
-        })
-        .catch(function(err){
-            console.error(err);
-            res.status(500).send(err); 
-        });
 });
 
 /**
@@ -60,15 +66,12 @@ router.get('/', function(req, res) {
  * @bodyparam {DossierObject} dossier objevt to be saved in the database
  */
 router.post('/', function(req, res, next){
-    console.log('In Dossier Post');
     Dossier.create(req.body)
     .then(function(dossier){
-        console.log('Created Dossier');
         var dossierId = dossier._id;
         return Sequence.AddSequence(dossier.toObject());      
     })
     .then(function(data){
-        console.log("New Dossier created by id " + data.dossier._id);
         res.send(data.dossier._id); 
     })
     .catch(function(err){
