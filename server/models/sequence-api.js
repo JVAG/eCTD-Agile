@@ -13,10 +13,6 @@ const DRAFTS_PATH = path.join(__dirname, '../drafts');
 module.exports.AddSequence = function(dossier){
     /* Copy template to current sequence folder */
     var templatePath = GetTemplatePath(dossier);
-<<<<<<< HEAD
-
-=======
->>>>>>> dev-dossier-validate
     var dossierPath = GetDossierPath(dossier);
     
     return new Promise(function(resolve, reject){
