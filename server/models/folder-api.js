@@ -13,7 +13,10 @@ var InsertAll = function(arr){
 };
 module.exports.InsertAll = InsertAll;
 
-createXMLMapping();
+module.exports.GetXmlMappings = function(arr){
+    return XMLMapping.find();
+};
+
 
 function createXMLMapping(){
 
@@ -109,6 +112,7 @@ function createXMLMapping(){
     xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p3-manuf/control-critical-steps.pdf'] = new FolderData('Controls of Critical Steps and Intermediates (name, dosage form)','m3-2-p-3-4-controls-of-critical-steps-and-intermediates');
     xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p3-manuf/process-validation.pdf'] = new FolderData('Process Validation and/or Evaluation (name, dosage form)','m3-2-p-3-5-process-validation-and-or-evaluation');
     xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p4-contr-excip'] = new FolderData('Control of Excipients (name, dosage form)', 'm3-2-p-4-control-of-excipients');
+    xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p4-contr-excip/excipient-1'] = new FolderData('Control of Excipients (name, dosage form) – Excipient ', 'm3-2-p-4-control-of-excipients');
     xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p4-contr-excip/excipient-1/specifications.pdf'] = new FolderData('Specifications (name, dosage form)', 'm3-2-p-4-1-specifications');
     xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p4-contr-excip/excipient-1/analytical-procedures.pdf'] = new FolderData('Analytical Procedures (name, dosage form)','m3-2-p-4-2-analytical-procedures');
     xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p4-contr-excip/excipient-1/validation-analyt-procedures.pdf'] = new FolderData('Validation of Analytical Procedures (name, dosage form)','m3-2-p-4-3-validation-of-analytical-procedures');
@@ -137,9 +141,9 @@ function createXMLMapping(){
     xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p8-stab/postapproval-stability.pdf'] = new FolderData('Post-approval Stability Protocol and Stability Commitment (name, dosage form)','m3-2-p-8-2-post-approval-stability-protocol-and-stability-commitment');
     xmlmap['m3/32-body-data/32p-drug-prod/product-1/32p8-stab/stability-data.pdf'] = new FolderData('Stability Data (name, dosage form)','m3-2-p-8-3-stability-data');
     xmlmap['m3/32-body-data/32a-app'] = new FolderData('Appendices','m3-2-a-appendices');
-    xmlmap['m3/32-body-d 123 ata/32a-app/32a1-fac-equip'] = new FolderData('Facilities and Equipment (name, manufacturer)','m3-2-a-1-facilities-and-equipment');
+    xmlmap['m3/32-body-data/32a-app/32a1-fac-equip'] = new FolderData('Facilities and Equipment (name, manufacturer)','m3-2-a-1-facilities-and-equipment');
     xmlmap['m3/32-body-data/32a-app/32a1-fac-equip/facilities-and-equipment-report-1.pdf'] = new FolderData('Facilities and Equipment Report 1','m3-2-a-1-facilities-and-equipment');
-    xmlmap['m3/32-body-data/32a-a 127 pp/32a2-advent-agent'] = new FolderData('Adventitious Agents Safety Evaluation (name, dosage form, manufacturer)','m3-2-a-2-adventitious-agents-safety-evaluation');
+    xmlmap['m3/32-body-data/32a-app/32a2-advent-agent'] = new FolderData('Adventitious Agents Safety Evaluation (name, dosage form, manufacturer)','m3-2-a-2-adventitious-agents-safety-evaluation');
     xmlmap['m3/32-body-data/32a-app/32a2-advent-agent/adventitious-agents-report-1.pdf'] = new FolderData('Adventitious Agents Safety Evaluation Report 1','m3-2-a-2-adventitious-agents-safety-evaluation');
     xmlmap['m3/32-body-data/32a-app/32a2-advent-agent/adventitious-agents-report-2.pdf'] = new FolderData('Adventitious Agents Safety Evaluation Report 2','m3-2-a-2-adventitious-agents-safety-evaluation');
     xmlmap['m3/32-body-data/32a-app/32a3-excip-name-1'] = new FolderData('Excipients – Name','m3-2-a-3-excipients');
@@ -314,114 +318,88 @@ function createXMLMapping(){
     xmlmap['m5/53-clin-stud-rep/531-rep-biopharm-stud/5314-bioanalyt-analyt-met/study-report-3'] = new FolderData('Study Report 3', 'm5-3-1-4-reports-of-bioanalytical-and-analytical-methods-for-human-studies');
     xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat'] = new FolderData('Reports of Studies Pertinent to Pharmacokinetics using Human Biomaterials', 'm5-3-2-reports-of-studies-pertinent-to-pharmacokinetics-using-human-biomaterials');
     xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5321-plasma-prot-bind-stud-rep'] = new FolderData('Plasma Protein Binding Study Reports', 'm5-3-2-1-plasma-protein-binding-study-reports');
-// /* 11 */
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-// /* 12 */
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-// /* 13 */
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-// /* 14 */
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-// /* 15 */
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-// /* 16 */
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
-//     xmlmap[''] = new FolderData('', '');
 
-    ClearCollection()
-    .then(function(result){
-        var xmlMappinArray = convertToArray(xmlmap);
-        return InsertAll(xmlMappinArray);
-    })
-    .then(function(XMLMappings){
-        console.log(XMLMappings.length + " xml mappings added.");
-    })
-    .catch(function(err){
-        console.error(err);
-    });
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5321-plasma-prot-bind-stud-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-2-1-plasma-protein-binding-study-reports');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5321-plasma-prot-bind-stud-rep/study-report-2'] = new FolderData('Study Report 2', 'm5-3-2-1-plasma-protein-binding-study-reports');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5321-plasma-prot-bind-stud-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-2-1-plasma-protein-binding-study-reports');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5322-rep-hep-metab-interact-stud'] = new FolderData('Reports of Hepatic Metabolism and Drug Interaction Studies', 'm5-3-2-2-reports-of-hepatic-metabolism-and-drug-interaction-studies');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5322-rep-hep-metab-interact-stud/study-report-1'] = new FolderData('Study Report 1', 'm5-3-2-2-reports-of-hepatic-metabolism-and-drug-interaction-studies');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5322-rep-hep-metab-interact-stud/study-report-2'] = new FolderData('Study Report 2', 'm5-3-2-2-reports-of-hepatic-metabolism-and-drug-interaction-studies');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5322-rep-hep-metab-interact-stud/study-report-3'] = new FolderData('Study Report 3', 'm5-3-2-2-reports-of-hepatic-metabolism-and-drug-interaction-studies');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5323-stud-other-human-biomat'] = new FolderData('Reports of Studies Using Other Human Biomaterials', 'm5-3-2-3-reports-of-studies-using-other-human-biomaterials');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5323-stud-other-human-biomat/study-report-1'] = new FolderData('Study Report 1', 'm5-3-2-3-reports-of-studies-using-other-human-biomaterials');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5323-stud-other-human-biomat/study-report-2'] = new FolderData('Study Report 2', 'm5-3-2-3-reports-of-studies-using-other-human-biomaterials');
+    xmlmap['m5/53-clin-stud-rep/532-rep-stud-pk-human-biomat/5323-stud-other-human-biomat/study-report-3'] = new FolderData('Study Report 3', 'm5-3-2-3-reports-of-studies-using-other-human-biomaterials');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud'] = new FolderData('Reports of Human Pharmacokinetic (PK) Studies', 'm5-3-3-reports-of-human-pharmacokinetics-pk-studies');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5331-healthy-subj-pk-init-tol-stud-rep'] = new FolderData('Healthy Subject PK and Initial Tolerability Study Reports', 'm5-3-3-1-healthy-subject-pk-and-initial-tolerability-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5331-healthy-subj-pk-init-tol-stud-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-3-1-healthy-subject-pk-and-initial-tolerability-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5331-healthy-subj-pk-init-tol-stud-rep/study-report-2'] = new FolderData('Study Report 2', 'm5-3-3-1-healthy-subject-pk-and-initial-tolerability-study-reports');
+// /* 12 */
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5331-healthy-subj-pk-init-tol-stud-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-3-1-healthy-subject-pk-and-initial-tolerability-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5332-patient-pk-init-tol-stud-rep'] = new FolderData('Patient PK and Initial Tolerability Study Reports', 'm5-3-3-2-patient-pk-and-initial-tolerability-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5332-patient-pk-init-tol-stud-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-3-2-patient-pk-and-initial-tolerability-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5332-patient-pk-init-tol-stud-rep/study-report-2'] = new FolderData('Study Report 2', 'm5-3-3-2-patient-pk-and-initial-tolerability-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5332-patient-pk-init-tol-stud-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-3-2-patient-pk-and-initial-tolerability-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5333-intrin-factor-pk-stud-rep'] = new FolderData('Intrinsic Factor PK Study Reports', 'm5-3-3-3-intrinsic-factor-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5333-intrin-factor-pk-stud-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-3-3-intrinsic-factor-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5333-intrin-factor-pk-stud-rep/study-report-2'] = new FolderData('Study Report 2', 'm5-3-3-3-intrinsic-factor-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5333-intrin-factor-pk-stud-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-3-3-intrinsic-factor-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5334-extrin-factor-pk-stud-rep'] = new FolderData('Extrinsic Factor PK Study Reports', 'm5-3-3-4-extrinsic-factor-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5334-extrin-factor-pk-stud-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-3-4-extrinsic-factor-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5334-extrin-factor-pk-stud-rep/study-report-2'] = new FolderData('Study Report 2', '5-3-3-4-extrinsic-factor-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5334-extrin-factor-pk-stud-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-3-4-extrinsic-factor-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5335-popul-pk-study-rep'] = new FolderData('Population PK Study Reports', '5-3-3-5-population-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5335-popul-pk-study-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-3-5-population-pk-study-reports');
+// /* 13 */
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5335-popul-pk-study-rep/study-report-2'] = new FolderData('Study Report 2', 'm5-3-3-5-population-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/533-rep-human-pk-stud/5335-popul-pk-study-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-3-5-population-pk-study-reports');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud'] = new FolderData('Reports of Human Pharmacodynamic (PD) Studies', 'm5-3-4-reports-of-human-pharmacodynamics-pd-studies');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud/5341-healthy-subj-pd-stud-rep'] = new FolderData('Healthy Subject PD and PK/PD Study Reports', 'm5-3-4-1-healthy-subject-pd-and-pk-pd-study-reports');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud/5341-healthy-subj-pd-stud-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-4-1-healthy-subject-pd-and-pk-pd-study-reports');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud/5341-healthy-subj-pd-stud-rep/study-report-2'] = new FolderData('Study Report 2', 'm5-3-4-1-healthy-subject-pd-and-pk-pd-study-reports');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud/5341-healthy-subj-pd-stud-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-4-1-healthy-subject-pd-and-pk-pd-study-reports');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud/5342-patient-pd-stud-rep'] = new FolderData('Patient PD and PK/PD Study Reports', 'm5-3-4-2-patient-pd-and-pk-pd-study-reports');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud/5342-patient-pd-stud-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-4-2-patient-pd-and-pk-pd-study-reports');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud/5342-patient-pd-stud-rep/study-report-2'] = new FolderData('Study Report 2', 'm5-3-4-2-patient-pd-and-pk-pd-study-reports');
+    xmlmap['m5/53-clin-stud-rep/534-rep-human-pd-stud/5342-patient-pd-stud-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-4-2-patient-pd-and-pk-pd-study-reports');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud'] = new FolderData('Reports of Efficacy and Safety Studies', 'm5-3-5-reports-of-efficacy-and-safety-studies');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1'] = new FolderData('Reports of Efficacy and Safety Studies - Indication Name', 'm5-3-5-reports-of-efficacy-and-safety-studies');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5351-stud-rep-contr'] = new FolderData('Study Reports of Controlled Clinical Studies Pertinent to the Claimed Indication', 'm5-3-5-1-study-reports-of-controlled-clinical-studies-pertinent-to-the-claimed-indication');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5351-stud-rep-contr/study-report-1'] = new FolderData('Study Report 1', 'm5-3-5-1-study-reports-of-controlled-clinical-studies-pertinent-to-the-claimed-indication');
+// /* 14 */
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5351-stud-rep-contr/study-report-2'] = new FolderData('Study Report 2', 'm5-3-5-1-study-reports-of-controlled-clinical-studies-pertinent-to-the-claimed-indication');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5351-stud-rep-contr/study-report-3'] = new FolderData('Study Report 3', 'm5-3-5-1-study-reports-of-controlled-clinical-studies-pertinent-to-the-claimed-indication');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5352-stud-rep-uncontr'] = new FolderData('Study Reports of Uncontrolled Clinical Studies', 'm5-3-5-2-study-reports-of-uncontrolled-clinical-studies');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5352-stud-rep-uncontr/study-report-1'] = new FolderData('Study Report 1', 'm5-3-5-2-study-reports-of-uncontrolled-clinical-studies');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5352-stud-rep-uncontr/study-report-2'] = new FolderData('Study Report 2', 'm5-3-5-2-study-reports-of-uncontrolled-clinical-studies');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5352-stud-rep-uncontr/study-report-3'] = new FolderData('Study Report 3', 'm5-3-5-2-study-reports-of-uncontrolled-clinical-studies');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5353-rep-analys-data-more-one-stud'] = new FolderData('Reports of Analyses of Data from More than One Study', 'm5-3-5-3-reports-of-analyses-of-data-from-more-than-one-study');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5353-rep-analys-data-more-one-stud/study-report-1'] = new FolderData('Study Report 1', 'm5-3-5-3-reports-of-analyses-of-data-from-more-than-one-study');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5353-rep-analys-data-more-one-stud/study-report-2'] = new FolderData('Study Report 2', 'm5-3-5-3-reports-of-analyses-of-data-from-more-than-one-study');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5353-rep-analys-data-more-one-stud/study-report-3'] = new FolderData('Study Report 3', 'm5-3-5-3-reports-of-analyses-of-data-from-more-than-one-study');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5354-other-stud-rep'] = new FolderData('Other Study Reports', 'm5-3-5-4-other-study-reports');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5354-other-stud-rep/study-report-1'] = new FolderData('Study Report 1', 'm5-3-5-4-other-study-reports');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5354-other-stud-rep/study-report-2'] = new FolderData('Study Report 2', 'm5-3-5-4-other-study-reports');
+    xmlmap['m5/53-clin-stud-rep/535-rep-effic-safety-stud/indication-1/5354-other-stud-rep/study-report-3'] = new FolderData('Study Report 3', 'm5-3-5-4-other-study-reports');
+    xmlmap['m5/53-clin-stud-rep/536-postmark-exp'] = new FolderData('Reports of Postmarketing Experience', 'm5-3-6-reports-of-postmarketing-experience');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl'] = new FolderData('Case Report Forms and Individual Patient Listings', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-1'] = new FolderData('Study 1', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-1/filename-1.pdf'] = new FolderData('Document/Dataset 1', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-1/filename-2.pdf'] = new FolderData('Document/Dataset 2', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-1/filename-3.pdf'] = new FolderData('Document/Dataset 3', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-2'] = new FolderData('Study 2', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-2/filename-1.pdf'] = new FolderData('Document/Dataset 1', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-2/filename-2.pdf'] = new FolderData('Document/Dataset 2', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-2/filename-3.pdf'] = new FolderData('Document/Dataset 3', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-3'] = new FolderData('Study 3', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-3/filename-1.pdf'] = new FolderData('Document/Dataset 1', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-3/filename-2.pdf'] = new FolderData('Document/Dataset 2', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/53-clin-stud-rep/537-crf-ipl/study-3/filename-3.pdf'] = new FolderData('Document/Dataset 3', 'm5-3-7-case-report-forms-and-individual-patient-listings');
+    xmlmap['m5/54-lit-ref'] = new FolderData('Literature References', 'm5-4-literature-references');
+    xmlmap['m5/54-lit-ref/reference-1.pdf'] = new FolderData('Reference 1', 'm5-4-literature-references');
+    xmlmap['m5/54-lit-ref/reference-2.pdf'] = new FolderData('Reference 2', 'm5-4-literature-references');
+    xmlmap['m5/54-lit-ref/reference-3.pdf'] = new FolderData('Reference 3', 'm5-4-literature-references');
+    return xmlmap;
 }
 
 function convertToArray(xmlmap){
@@ -437,3 +415,16 @@ function convertToArray(xmlmap){
     }
     return arr;
 }
+
+ClearCollection()
+.then(function(result){
+    let xmlmap = createXMLMapping();
+    var xmlMappinArray = convertToArray(xmlmap);
+    return InsertAll(xmlMappinArray);
+})
+.then(function(result){
+    console.log(result.length + " xml element mappings added");
+})
+.catch(function(err){
+    console.error(err);
+});
