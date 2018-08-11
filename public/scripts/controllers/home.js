@@ -1,5 +1,6 @@
 var app = angular.module('ectdApp')
-.controller('HomeController',['$log', 'DossierListService', 'NotificationService', function($log, Dossiers, Notifications){
+.controller('HomeController',['$log', '$state', 'DossierListService', 'NotificationService'
+    ,function($log, $state, Dossiers, Notifications){
     var self = this;
     Dossiers.getAllDossiers(function(err, dossierList){
         if(err){
@@ -11,7 +12,7 @@ var app = angular.module('ectdApp')
             self.dossierList = dossierList;
         }
     });
-    // self.select = function(dossier){
-    //     console.log(dossier.Title + " selected");
-    // }
+    self.select = function(dossier){
+        $state.go('dossier', {dossierId: dossier.id});
+    }
 }])

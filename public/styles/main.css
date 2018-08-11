@@ -26,3 +26,7 @@ input.ng-invalid {
 li.jstree-open > a > i.jstree-icon {
     background:url("../images/folder-open-16.png") 0px 0px no-repeat !important;
 }
+
+#dossierlist tr{
+    cursor: pointer;
+}
