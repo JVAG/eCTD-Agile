@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row-fluid">
-        <table class="table table-hover table-condensed table-responsive">
+        <table id="dossierlist" class="table table-hover table-condensed table-responsive">
             <tr>
                 <th>Title</th>
                 <th>Product</th>
@@ -11,7 +11,7 @@
                 <th>Due Date</th>
                 <!-- <th>Actions</th> -->
             </tr>
-            <tr ng-repeat="dossier in homectrl.dossierList">
+            <tr ng-repeat="dossier in homectrl.dossierList| orderBy:'id'" ng-click="homectrl.select(dossier)">
                 <td>{{dossier.Title}}</td>
                 <td>{{dossier.ProductBrandName}} ( {{dossier.ProductGenericName}} )</td>
                 <td>{{dossier.Applicant}}</td>
