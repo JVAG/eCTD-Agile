@@ -11,7 +11,7 @@
                 <th>Due Date</th>
                 <!-- <th>Actions</th> -->
             </tr>
-            <tr ng-repeat="dossier in homectrl.dossierList" ng-click="homectrl.select(dossier)">
+            <tr ng-repeat="dossier in homectrl.dossierList| orderBy:'id'" ng-click="homectrl.select(dossier)">
                 <td>{{dossier.Title}}</td>
                 <td>{{dossier.ProductBrandName}} ( {{dossier.ProductGenericName}} )</td>
                 <td>{{dossier.Applicant}}</td>
