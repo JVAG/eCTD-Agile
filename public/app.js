@@ -4,7 +4,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $stateProvider
         .state('home', {
             url: '/home',
-            template: '<div class="well"><h4 class="text-primary">Home page is under construction</h4></div>',
+            templateUrl: 'views/home.html',
+            controller: 'HomeController as homectrl'
+        })
+        .state('dashboard', {
+            url: '/dashboard',
+            templateUrl: 'views/dashboard.html',
+            controller: 'DashboardController as dashctrl'
         })
         .state('dossier', {
             url: '/dossier/:dossierId',
