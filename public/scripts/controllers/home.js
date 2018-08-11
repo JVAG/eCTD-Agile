@@ -6,8 +6,12 @@ var app = angular.module('ectdApp')
             $log.error(err);
             Notifications.addAlert(err, 'danger');
         }
-        else{
-            console.log(dossierList)
+        else {
+            console.log(dossierList);
+            self.dossierList = dossierList;
         }
     });
+    // self.select = function(dossier){
+    //     console.log(dossier.Title + " selected");
+    // }
 }])

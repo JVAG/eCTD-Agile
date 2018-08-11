@@ -5,7 +5,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         .state('home', {
             url: '/home',
             templateUrl: 'views/home.html',
-            controller: 'HomeController as hctrl'
+            controller: 'HomeController as homectrl'
         })
         .state('dashboard', {
             url: '/dashboard',

@@ -1,5 +1,25 @@
 <div class="container-fluid">
     <div class="row-fluid">
-        <h3 class="text-center text-primary">{{hctrl.title}}</h3>
+        <table class="table table-hover table-condensed table-responsive">
+            <tr>
+                <th>Title</th>
+                <th>Product</th>
+                <th>Applicant</th>
+                <th>ApplicationType</th>
+                <th>Region</th>
+                <th>DosageForm</th>
+                <th>Due Date</th>
+                <!-- <th>Actions</th> -->
+            </tr>
+            <tr ng-repeat="dossier in homectrl.dossierList">
+                <td>{{dossier.Title}}</td>
+                <td>{{dossier.ProductBrandName}} ( {{dossier.ProductGenericName}} )</td>
+                <td>{{dossier.Applicant}}</td>
+                <td>{{dossier.ApplicationType}}</td>
+                <td>{{dossier.Region}}</td>
+                <td>{{dossier.DosageForm}}</td>
+                <td>{{dossier.DueDate| date:'MMMM d, y, EEEE'}}</td>
+            </tr>
+        </table>
     </div>
 </div>
