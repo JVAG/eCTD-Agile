@@ -51,16 +51,6 @@ router.get('/:id', function(req, res){
 });
 
 /**
- * Returns list of all dossiers
- * @route {GET} /dossier
- * @returns {Array of DossierObject} Array of dossiers [{dosssier-object,....}]
- */
-router.get('/', function(req, res) {
-    console.log('Testing /dossier routes');
-    req.send('Returning all dossiers');
-});
-
-/**
  * Saves given dossier-object in the database
  * @route {POST} /dossier
  * @bodyparam {DossierObject} dossier objevt to be saved in the database
@@ -79,6 +69,5 @@ router.post('/', function(req, res, next){
         res.status(500).send(err); 
     });
 });
-
 
 module.exports = router;

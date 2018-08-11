@@ -13,6 +13,7 @@ console.log("Node environment :");
 
 /* Importing Server Routes */
 var dossierApi = require('./server/routes/dossier-main');
+var dossierListApi = require('./server/routes/dossier-list');
 
 var app = express();
 
@@ -33,6 +34,7 @@ Mongoose.connect('mongodb://localhost:27017/ectd2', function(err) {
 
 /* Using Server Routes */
 app.use('/dossier', dossierApi);
+app.use('/dossierlist', dossierListApi);
 
 /* Server-side error handling route */
 app.use(function(err, req, res, next){

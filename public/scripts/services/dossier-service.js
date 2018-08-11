@@ -31,18 +31,6 @@ var app = angular.module('ectdApp')
                     callback(error);
                 });
         };
-        this.getAllDossiers = function(callback){
-            console.log('In DossierService.getAllDossiers');
-            $http.get('/dossier').then(
-                function(data) {
-                    console.log(data);
-                    callback(null, data);
-                }, 
-                function(error) {
-                    console.error(error);
-                    callback(error);
-                });
-        };
 
         this.getDossierById = function(dossierId, callback){
             var url = '/dossier/' + dossierId;
